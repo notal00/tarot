@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>是与非 · Tarot</title>
-  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-  <link href="[https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Noto+Serif+SC:wght@300;400;500&display=swap](https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Noto+Serif+SC:wght@300;400;500&display=swap)" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg:          #f4f0e8;
@@ -36,272 +37,274 @@
       }
     }
 
-    /* 修正处：删除了错误的 Markdown 代码块标记 */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      font-family: 'Noto Serif SC', serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-      transition: background .4s, color .4s;
-    }
-    body::before {
-      content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
-      background:
-        radial-gradient(ellipse 60% 50% at 15% 15%, rgba(196,164,124,.06) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 85% 85%, rgba(139,104,67,.06) 0%, transparent 70%);
-    }
+body {
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background .4s, color .4s;
+}
+body::before {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 15%, rgba(196,164,124,.06) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 85% 85%, rgba(139,104,67,.06) 0%, transparent 70%);
+}
 
-    .page {
-      position:relative; z-index:1;
-      min-height:100vh;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      padding:3rem 1.5rem;
-    }
-    .page.hidden { display:none; }
+.page {
+  position:relative; z-index:1;
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:3rem 1.5rem;
+}
+.page.hidden { display:none; }
 
-    /* ── Landing ── */
-    .landing-inner {
-      display:flex; flex-direction:column;
-      align-items:center; gap:1.6rem; text-align:center;
-    }
-    .site-title {
-      font-family:'Cinzel Decorative',serif;
-      font-size:clamp(3rem,10vw,5.5rem);
-      font-weight:700; color:var(--accent);
-      letter-spacing:.08em; line-height:1;
-      animation:fadeUp .9s ease both;
-    }
-    .site-sub {
-      font-family:'Cinzel Decorative',serif;
-      font-size:clamp(.58rem,2vw,.76rem);
-      color:var(--text-dim); letter-spacing:.45em; margin-top:.5rem;
-      animation:fadeUp .9s .15s ease both;
-    }
-    .ornament {
-      width:100px; height:1px; position:relative; margin:.25rem auto;
-      background:linear-gradient(to right,transparent,var(--accent),transparent);
-      animation:fadeUp .9s .3s ease both;
-    }
-    .ornament::after {
-      content:'✦'; position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      font-size:.6rem; color:var(--accent);
-      background:var(--bg); padding:0 .4rem;
-    }
-    .prompt {
-      font-size:.92rem; color:var(--text-dim);
-      font-weight:300; letter-spacing:.04em; line-height:2;
-      animation:fadeUp .9s .45s ease both;
-    }
-    .btn-draw {
-      margin-top:.2rem; padding:.95rem 2.8rem;
-      border:1px solid var(--accent); background:transparent;
-      color:var(--accent);
-      font-family:'Cinzel Decorative',serif;
-      font-size:.75rem; letter-spacing:.25em; cursor:pointer;
-      position:relative; transition:color .3s, background .3s;
-      animation:fadeUp .9s .6s ease both;
-    }
-    .btn-draw::before,.btn-draw::after {
-      content:''; position:absolute;
-      width:7px; height:7px;
-      border-color:var(--accent); border-style:solid;
-      transition:border-color .3s;
-    }
-    .btn-draw::before { top:-1px; left:-1px;   border-width:1px 0 0 1px; }
-    .btn-draw::after  { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
-    .btn-draw:hover { background:var(--accent); color:var(--bg); }
-    .btn-draw:hover::before,.btn-draw:hover::after { border-color:var(--bg); }
+/* ── Landing ── */
+.landing-inner {
+  display:flex; flex-direction:column;
+  align-items:center; gap:1.6rem; text-align:center;
+}
+.site-title {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(3rem,10vw,5.5rem);
+  font-weight:700; color:var(--accent);
+  letter-spacing:.08em; line-height:1;
+  animation:fadeUp .9s ease both;
+}
+.site-sub {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(.58rem,2vw,.76rem);
+  color:var(--text-dim); letter-spacing:.45em; margin-top:.5rem;
+  animation:fadeUp .9s .15s ease both;
+}
+.ornament {
+  width:100px; height:1px; position:relative; margin:.25rem auto;
+  background:linear-gradient(to right,transparent,var(--accent),transparent);
+  animation:fadeUp .9s .3s ease both;
+}
+.ornament::after {
+  content:'✦'; position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-size:.6rem; color:var(--accent);
+  background:var(--bg); padding:0 .4rem;
+}
+.prompt {
+  font-size:.92rem; color:var(--text-dim);
+  font-weight:300; letter-spacing:.04em; line-height:2;
+  animation:fadeUp .9s .45s ease both;
+}
+.btn-draw {
+  margin-top:.2rem; padding:.95rem 2.8rem;
+  border:1px solid var(--accent); background:transparent;
+  color:var(--accent);
+  font-family:'Cinzel Decorative',serif;
+  font-size:.75rem; letter-spacing:.25em; cursor:pointer;
+  position:relative; transition:color .3s, background .3s;
+  animation:fadeUp .9s .6s ease both;
+}
+.btn-draw::before,.btn-draw::after {
+  content:''; position:absolute;
+  width:7px; height:7px;
+  border-color:var(--accent); border-style:solid;
+  transition:border-color .3s;
+}
+.btn-draw::before { top:-1px; left:-1px;   border-width:1px 0 0 1px; }
+.btn-draw::after  { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+.btn-draw:hover { background:var(--accent); color:var(--bg); }
+.btn-draw:hover::before,.btn-draw:hover::after { border-color:var(--bg); }
 
-    /* ── Results ── */
-    #results {
-      display:none; flex-direction:column;
-      align-items:center; gap:0;
-      justify-content:flex-start;
-      padding:3.5rem 1.5rem 5rem;
-    }
-    #results.active { display:flex; }
+/* ── Results ── */
+#results {
+  display:none; flex-direction:column;
+  align-items:center; gap:0;
+  justify-content:flex-start;
+  padding:3.5rem 1.5rem 5rem;
+}
+#results.active { display:flex; }
 
-    .results-eyebrow {
-      font-family:'Cinzel Decorative',serif;
-      font-size:.68rem; letter-spacing:.38em;
-      color:var(--text-dim); margin-bottom:2.8rem;
-    }
+.results-eyebrow {
+  font-family:'Cinzel Decorative',serif;
+  font-size:.68rem; letter-spacing:.38em;
+  color:var(--text-dim); margin-bottom:2.8rem;
+}
 
-    /* ── Cards ── */
-    .cards-grid {
-      display:flex; gap:1.2rem;
-      justify-content:center; flex-wrap:nowrap;
-      width:100%; max-width:660px;
-    }
-    .card-slot {
-      display:flex; flex-direction:column;
-      align-items:center; gap:.8rem;
-      flex:1; min-width:0;
-    }
-    .position-label {
-      font-size:.62rem; letter-spacing:.3em;
-      color:var(--text-dim); white-space:nowrap;
-    }
-    .card-wrapper {
-      perspective:1000px;
-      width:clamp(105px,27vw,170px);
-      aspect-ratio:10/17;
-    }
-    .card-inner {
-      width:100%; height:100%;
-      position:relative; transform-style:preserve-3d;
-      transition:transform .85s cubic-bezier(.4,0,.2,1);
-    }
-    .card-inner.flipped { transform:rotateY(180deg); }
+/* ── Cards ── */
+.cards-grid {
+  display:flex; gap:1.2rem;
+  justify-content:center; flex-wrap:nowrap;
+  width:100%; max-width:660px;
+}
+.card-slot {
+  display:flex; flex-direction:column;
+  align-items:center; gap:.8rem;
+  flex:1; min-width:0;
+}
+.position-label {
+  font-size:.62rem; letter-spacing:.3em;
+  color:var(--text-dim); white-space:nowrap;
+}
+.card-wrapper {
+  perspective:1000px;
+  width:clamp(105px,27vw,170px);
+  aspect-ratio:10/17;
+}
+.card-inner {
+  width:100%; height:100%;
+  position:relative; transform-style:preserve-3d;
+  transition:transform .85s cubic-bezier(.4,0,.2,1);
+}
+.card-inner.flipped { transform:rotateY(180deg); }
 
-    .card-back, .card-face {
-      position:absolute; inset:0; border-radius:7px;
-      backface-visibility:hidden; -webkit-backface-visibility:hidden;
-    }
+.card-back, .card-face {
+  position:absolute; inset:0; border-radius:7px;
+  backface-visibility:hidden; -webkit-backface-visibility:hidden;
+}
 
-    .card-back {
-      background:var(--card-bg);
-      display:flex; align-items:center; justify-content:center;
-      overflow:hidden; box-shadow:var(--shadow);
-    }
-    .card-back::before {
-      content:''; position:absolute; inset:7px;
-      border:1px solid var(--card-gdim); border-radius:3px;
-    }
-    .card-back::after {
-      content:''; position:absolute; inset:14px;
-      background-image:
-        repeating-linear-gradient( 45deg, var(--card-gdim) 0,var(--card-gdim) .5px,transparent .5px,transparent 12px),
-        repeating-linear-gradient(-45deg, var(--card-gdim) 0,var(--card-gdim) .5px,transparent .5px,transparent 12px);
-    }
-    .back-glyph {
-      position:relative; z-index:1;
-      font-size:.55rem; letter-spacing:.3em;
-      color:rgba(196,164,124,.28);
-      font-family:'Cinzel Decorative',serif;
-    }
+.card-back {
+  background:var(--card-bg);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; box-shadow:var(--shadow);
+}
+.card-back::before {
+  content:''; position:absolute; inset:7px;
+  border:1px solid var(--card-gdim); border-radius:3px;
+}
+.card-back::after {
+  content:''; position:absolute; inset:14px;
+  background-image:
+    repeating-linear-gradient( 45deg, var(--card-gdim) 0,var(--card-gdim) .5px,transparent .5px,transparent 12px),
+    repeating-linear-gradient(-45deg, var(--card-gdim) 0,var(--card-gdim) .5px,transparent .5px,transparent 12px);
+}
+.back-glyph {
+  position:relative; z-index:1;
+  font-size:.55rem; letter-spacing:.3em;
+  color:rgba(196,164,124,.28);
+  font-family:'Cinzel Decorative',serif;
+}
 
-    .card-face {
-      background:var(--card-bg);
-      transform:rotateY(180deg);
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:space-between;
-      padding:clamp(.65rem,2.5vw,.95rem) clamp(.45rem,1.8vw,.72rem);
-      border:1px solid rgba(196,164,124,.1);
-      box-shadow:var(--shadow);
-    }
-    .card-face::before {
-      content:''; position:absolute; inset:5px;
-      border:1px solid rgba(196,164,124,.07);
-      border-radius:3px; pointer-events:none;
-    }
-    .card-numeral {
-      font-family:'Cinzel Decorative',serif;
-      font-size:clamp(.4rem,.85vw,.56rem);
-      color:rgba(196,164,124,.42); letter-spacing:.12em;
-    }
-    .card-symbol {
-      flex:1; display:flex; align-items:center; justify-content:center;
-      font-size:clamp(1.9rem,6.5vw,3rem);
-      color:var(--card-gold); line-height:1;
-      font-family:'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols',sans-serif;
-      font-style:normal;
-      transition:transform .85s cubic-bezier(.4,0,.2,1) .2s;
-    }
-    .card-face.reversed .card-symbol { transform:rotate(180deg); }
+.card-face {
+  background:var(--card-bg);
+  transform:rotateY(180deg);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:space-between;
+  padding:clamp(.65rem,2.5vw,.95rem) clamp(.45rem,1.8vw,.72rem);
+  border:1px solid rgba(196,164,124,.1);
+  box-shadow:var(--shadow);
+}
+.card-face::before {
+  content:''; position:absolute; inset:5px;
+  border:1px solid rgba(196,164,124,.07);
+  border-radius:3px; pointer-events:none;
+}
+.card-numeral {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(.4rem,.85vw,.56rem);
+  color:rgba(196,164,124,.42); letter-spacing:.12em;
+}
+.card-symbol {
+  flex:1; display:flex; align-items:center; justify-content:center;
+  font-size:clamp(1.9rem,6.5vw,3rem);
+  color:var(--card-gold); line-height:1;
+  font-family:'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols',sans-serif;
+  font-style:normal;
+  transition:transform .85s cubic-bezier(.4,0,.2,1) .2s;
+}
+.card-face.reversed .card-symbol { transform:rotate(180deg); }
 
-    .card-bottom { text-align:center; }
-    .card-name {
-      font-family:'Cinzel Decorative',serif;
-      font-size:clamp(.34rem,.7vw,.48rem);
-      color:rgba(196,164,124,.6); letter-spacing:.07em; line-height:1.5;
-    }
-    .card-orient {
-      font-size:clamp(.28rem,.55vw,.4rem);
-      color:rgba(196,164,124,.32); letter-spacing:.18em; margin-top:.18rem;
-    }
+.card-bottom { text-align:center; }
+.card-name {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(.34rem,.7vw,.48rem);
+  color:rgba(196,164,124,.6); letter-spacing:.07em; line-height:1.5;
+}
+.card-orient {
+  font-size:clamp(.28rem,.55vw,.4rem);
+  color:rgba(196,164,124,.32); letter-spacing:.18em; margin-top:.18rem;
+}
 
-    /* ── Readings ── */
-    .readings-section {
-      width:100%; max-width:660px; margin-top:3rem;
-      display:flex; flex-direction:column; gap:2rem;
-    }
-    .reading-block {
-      opacity:0; transform:translateY(14px);
-      transition:opacity .55s ease, transform .55s ease;
-    }
-    .reading-block.visible { opacity:1; transform:translateY(0); }
+/* ── Readings ── */
+.readings-section {
+  width:100%; max-width:660px; margin-top:3rem;
+  display:flex; flex-direction:column; gap:2rem;
+}
+.reading-block {
+  opacity:0; transform:translateY(14px);
+  transition:opacity .55s ease, transform .55s ease;
+}
+.reading-block.visible { opacity:1; transform:translateY(0); }
 
-    .reading-pos { font-size:.6rem; letter-spacing:.3em; color:var(--accent); margin-bottom:.5rem; }
-    .reading-card-name {
-      font-family:'Cinzel Decorative',serif;
-      font-size:clamp(.8rem,2.4vw,.95rem); color:var(--text); margin-bottom:.2rem;
-    }
-    .reading-orient  { font-size:.67rem; color:var(--text-dim); letter-spacing:.15em; margin-bottom:.65rem; }
-    .reading-keywords{ font-size:.7rem; color:var(--accent-soft); letter-spacing:.08em; margin-bottom:.55rem; }
-    .reading-text    { font-size:clamp(.84rem,2vw,.92rem); line-height:2; color:var(--text-dim); font-weight:300; }
+.reading-pos { font-size:.6rem; letter-spacing:.3em; color:var(--accent); margin-bottom:.5rem; }
+.reading-card-name {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(.8rem,2.4vw,.95rem); color:var(--text); margin-bottom:.2rem;
+}
+.reading-orient  { font-size:.67rem; color:var(--text-dim); letter-spacing:.15em; margin-bottom:.65rem; }
+.reading-keywords{ font-size:.7rem; color:var(--accent-soft); letter-spacing:.08em; margin-bottom:.55rem; }
+.reading-text    { font-size:clamp(.84rem,2vw,.92rem); line-height:2; color:var(--text-dim); font-weight:300; }
 
-    /* ── Divider ── */
-    .sect-divider {
-      width:100%; max-width:660px; height:1px; margin:2.8rem 0;
-      background:linear-gradient(to right,transparent,var(--divider),transparent);
-      position:relative; opacity:0; transition:opacity .6s ease;
-    }
-    .sect-divider.show { opacity:1; }
-    .sect-divider::after {
-      content:'✦'; position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      font-size:.58rem; color:var(--accent);
-      background:var(--bg); padding:0 .5rem;
-    }
+/* ── Divider ── */
+.sect-divider {
+  width:100%; max-width:660px; height:1px; margin:2.8rem 0;
+  background:linear-gradient(to right,transparent,var(--divider),transparent);
+  position:relative; opacity:0; transition:opacity .6s ease;
+}
+.sect-divider.show { opacity:1; }
+.sect-divider::after {
+  content:'✦'; position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-size:.58rem; color:var(--accent);
+  background:var(--bg); padding:0 .5rem;
+}
 
-    /* ── Conclusion ── */
-    .conclusion {
-      width:100%; max-width:660px;
-      opacity:0; transform:translateY(12px);
-      transition:opacity .65s ease .2s, transform .65s ease .2s;
-    }
-    .conclusion.visible { opacity:1; transform:translateY(0); }
+/* ── Conclusion ── */
+.conclusion {
+  width:100%; max-width:660px;
+  opacity:0; transform:translateY(12px);
+  transition:opacity .65s ease .2s, transform .65s ease .2s;
+}
+.conclusion.visible { opacity:1; transform:translateY(0); }
 
-    .conclusion-eyebrow { font-size:.6rem; letter-spacing:.35em; color:var(--text-dim); margin-bottom:1.1rem; }
-    .verdict {
-      font-family:'Cinzel Decorative',serif;
-      font-size:clamp(1.2rem,3.5vw,1.6rem);
-      color:var(--accent); letter-spacing:.06em; margin-bottom:.9rem;
-    }
-    .conclusion-text { font-size:clamp(.84rem,2vw,.92rem); line-height:2; color:var(--text-dim); font-weight:300; max-width:560px; }
+.conclusion-eyebrow { font-size:.6rem; letter-spacing:.35em; color:var(--text-dim); margin-bottom:1.1rem; }
+.verdict {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.2rem,3.5vw,1.6rem);
+  color:var(--accent); letter-spacing:.06em; margin-bottom:.9rem;
+}
+.conclusion-text { font-size:clamp(.84rem,2vw,.92rem); line-height:2; color:var(--text-dim); font-weight:300; max-width:560px; }
 
-    /* ── Actions ── */
-    .actions {
-      margin-top:3rem; display:flex; gap:1rem; flex-wrap:wrap;
-      justify-content:center; opacity:0; transition:opacity .5s ease;
-    }
-    .actions.show { opacity:1; }
-    .btn-restart {
-      padding:.72rem 2rem;
-      border:1px solid var(--border); background:transparent;
-      color:var(--text-dim);
-      font-family:'Noto Serif SC',serif;
-      font-size:.8rem; letter-spacing:.1em; cursor:pointer;
-      transition:border-color .3s, color .3s;
-    }
-    .btn-restart:hover { border-color:var(--accent); color:var(--accent); }
+/* ── Actions ── */
+.actions {
+  margin-top:3rem; display:flex; gap:1rem; flex-wrap:wrap;
+  justify-content:center; opacity:0; transition:opacity .5s ease;
+}
+.actions.show { opacity:1; }
+.btn-restart {
+  padding:.72rem 2rem;
+  border:1px solid var(--border); background:transparent;
+  color:var(--text-dim);
+  font-family:'Noto Serif SC',serif;
+  font-size:.8rem; letter-spacing:.1em; cursor:pointer;
+  transition:border-color .3s, color .3s;
+}
+.btn-restart:hover { border-color:var(--accent); color:var(--accent); }
 
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(18px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
 
-    @media (max-width:480px) { .cards-grid { gap:.55rem; } }
-    @media (max-width:360px) { .card-wrapper { width:88px; } }
+@media (max-width:480px) { .cards-grid { gap:.55rem; } }
+@media (max-width:360px) { .card-wrapper { width:88px; } }
+
   </style>
 </head>
 <body>
+
+<!-- LANDING -->
 
 <section id="landing" class="page">
   <div class="landing-inner">
@@ -314,6 +317,8 @@
     <button class="btn-draw" id="btn-draw">抽　　牌</button>
   </div>
 </section>
+
+<!-- RESULTS -->
 
 <section id="results" class="page">
   <div class="results-eyebrow">三　牌　阵</div>
@@ -382,30 +387,140 @@
 </section>
 
 <script>
-// 此处保留你原始脚本逻辑（未做变动，已确认逻辑正确）
+// ── Card Data ──────────────────────────────
 const CARDS = [
-  { id:0, name:"The Fool", numeral:"0", symbol:"\u25CC", uScore:1, rScore:-0.5, upright:{ kw:"新开始 · 自由 · 信念", text:"你正站在全新旅程的起点。愚者带来的是无所畏惧的纯粹能量——不是因为没有风险，而是有一种天真的勇气推你向前。此刻适合相信直觉，放下过度的计算，让事情自然展开。" }, reversed:{ kw:"鲁莽 · 逃避 · 停滞", text:"逆位的愚者提示当前的出发点可能不够稳固。也许你在用'随性'掩盖真正的犹豫，或者在不该轻率的地方过于冒险。先停下来，想清楚你真正在逃避的是什么。" } },
-  { id:1, name:"The Magician", numeral:"I", symbol:"\u221E", uScore:1, rScore:-0.5, upright:{ kw:"意志 · 行动 · 掌控", text:"魔术师告诉你，你已拥有完成这件事所需的一切能力。现在需要的不是更多准备，而是意志与行动。机会已在眼前，你是否准备好将它转化为现实？" }, reversed:{ kw:"欺骗 · 能力散失 · 拖延", text:"逆位的魔术师暗示资源或意志的浪费。你可能在自我怀疑中裹足不前，或者有欺骗自己的成分在内。重新梳理你真正拥有的条件，而不是你以为缺少的东西。" } },
-  { id:2, name:"The High Priestess", numeral:"II", symbol:"\u263D", uScore:0, rScore:-0.5, upright:{ kw:"直觉 · 神秘 · 等待", text:"女祭司的出现提醒你，答案还藏在水面之下。不是所有事情都需要立刻行动——有时最好的回应是静候与倾听。你内心深处已经知道答案，只是还不到时候。" }, reversed:{ kw:"忽视直觉 · 秘密 · 混乱", text:"你可能正在忽视内心的声音，或被表面的信息所迷惑。逆位的女祭司提示你需要更多时间与自己和解，再仓促下结论只会让局面更加不清晰。" } },
-  { id:3, name:"The Empress", numeral:"III", symbol:"\u2640\uFE0E", uScore:1, rScore:0, upright:{ kw:"丰盛 · 创造 · 滋养", text:"皇后代表丰盛与生命力。此刻的能量是有利的——无论关系、创作还是计划，都处于生长的土壤之中。只要你愿意给予时间与耐心，结果将会是丰厚的。" }, reversed:{ kw:"依赖 · 创造受阻 · 过度付出", text:"逆位的皇后提示创造力或关系中的某种阻塞。也许你在过度付出而消耗自己，或者在等待别人来给你你本该给自己的东西。重新找回内心的滋养来源。" } },
-  { id:4, name:"The Emperor", numeral:"IV", symbol:"\u2642\uFE0E", uScore:0.5, rScore:-0.5, upright:{ kw:"秩序 · 稳固 · 权威", text:"皇帝带来的是结构与稳定的力量。若你的问题关乎某件需要规则或决断的事，答案倾向肯定——前提是你愿意承担相应的责任，以清醒的理性去推进。" }, reversed:{ kw:"控制 · 僵化 · 权力失衡", text:"逆位的皇帝提示过度控制或权威的滥用。这件事也许正因为太多规则束缚而难以前进，或者有人在用强硬代替真正的解决。" } },
-  { id:5, name:"The Hierophant", numeral:"V", symbol:"\u271B", uScore:0, rScore:-0.5, upright:{ kw:"传统 · 信念 · 引导", text:"教皇提示你在这件事上寻求既有的智慧或传统路径。也许答案并非全新的方向，而是遵循已被证明有效的方式。也可以向信任的人寻求建议。" }, reversed:{ kw:"打破规则 · 质疑 · 叛逆", text:"逆位的教皇提示现有的框架可能正在束缚你。也许是时候质疑那些'理所当然'的规则，但要小心区分真正的突破与单纯的逃避。" } },
-  { id:6, name:"The Lovers", numeral:"VI", symbol:"\u25E1", uScore:1, rScore:-1, upright:{ kw:"连结 · 抉择 · 和谐", text:"恋人牌代表深刻的连结与重要的选择。这张牌带来肯定的能量——但它也提醒你，真正的选择需要出于内心的真实意愿，而非外部压力。" }, reversed:{ kw:"失调 · 价值观冲突 · 错误抉择", text:"逆位的恋人提示关系或内心的失衡。你也许正在面对价值观的冲突，或者一段关系中有某些地方被回避而未被正视。在做决定之前，先诚实地面对自己。" } },
-  { id:7, name:"The Chariot", numeral:"VII", symbol:"\u2295", uScore:1, rScore:-0.5, upright:{ kw:"胜利 · 意志 · 前进", text:"战车带来强烈的前进动力。你有能力克服眼前的障碍——关键在于将内心的不同力量整合起来，朝同一个方向推进。这是一张鼓励行动的牌。" }, reversed:{ kw:"失控 · 方向迷失 · 攻击性", text:"逆位的战车提示动力在错误的方向上消耗。你可能感到失控或被事情推着走，而非主动掌舵。先停下来，确认你真正想去往哪里，再重新出发。" } },
-  { id:8, name:"Strength", numeral:"VIII", symbol:"\u29BF", uScore:1, rScore:-0.5, upright:{ kw:"内力 · 耐心 · 温柔的勇气", text:"力量牌告诉你，你拥有足够的内在资源去面对这个问题。所需要的不是蛮力，而是那种温柔而坚定的意志——对自己和局面都保持耐心，答案将在这种稳定中显现。" }, reversed:{ kw:"怀疑 · 软弱 · 压抑", text:"逆位的力量提示内在资源的耗竭或自我怀疑的加剧。你可能正在压抑某些真实的感受，或者因为害怕失败而提前放弃。先允许自己脆弱，再谈坚强。" } },
-  { id:9, name:"The Hermit", numeral:"IX", symbol:"\u25B3", uScore:-0.5, rScore:-1, upright:{ kw:"内省 · 独处 · 寻找", text:"隐者的出现告诉你，这件事的答案不在外部，而需要向内寻找。此刻适合暂时退后一步，给自己独处和思考的空间。急于得出结论并非良策。" }, reversed:{ kw:"孤立 · 固执 · 拒绝帮助", text:"逆位的隐者提示过度的封闭或固执。你可能将独处变成了孤立，或者拒绝接受可能有益的外部视角。这次也许需要的是走出来，而非继续退缩。" } },
-  { id:10, name:"Wheel of Fortune", numeral:"X", symbol:"\u2299", uScore:1, rScore:-0.5, upright:{ kw:"转机 · 命运 · 循环", text:"命运之轮提示一个自然转折点的到来。事情正处于变动之中，整体的风向是积极的。这张牌鼓励你信任这个过程——有些事情并不需要你去强行控制，时机已经在转变。" }, reversed:{ kw:"不走运 · 阻力 · 抗拒变化", text:"逆位的命运之轮提示循环中的阻力。也许你正在抗拒一个本该到来的变化，或者暂时处于低潮期。轮子始终在转，只是需要多一些耐心。" } },
-  { id:11, name:"Justice", numeral:"XI", symbol:"\u229C", uScore:0.5, rScore:-0.5, upright:{ kw:"公正 · 因果 · 真相", text:"正义牌告诉你，这件事将得到公正的对待。如果你问的是某件基于诚实与付出的事，答案倾向肯定——但它也提醒你，结果将严格对应你所投入的。" }, reversed:{ kw:"不公 · 逃避 · 不诚实", text:"逆位的正义提示某种不平衡或逃避责任的状态。也许有些事情还未得到公正的对待，或者某个重要的真相被刻意回避。在继续前进之前，需要先面对这个问题。" } },
-  { id:12, name:"The Hanged Man", numeral:"XII", symbol:"\u22A5", uScore:-0.5, rScore:0, upright:{ kw:"暂停 · 放手 · 换视角", text:"倒吊人要求你暂停，从不同角度看待眼前的问题。也许答案不在于推进，而在于放下。从另一个方向，你可能会看到你一直错过的东西。" }, reversed:{ kw:"拖延 · 无谓牺牲 · 顽固", text:"逆位的倒吊人提示你的等待已变成拖延，或者你正在做出无谓的牺牲。是时候结束这种悬而未决的状态，做出决定，继续前行。" } },
-  { id:13, name:"Death", numeral:"XIII", symbol:"\u2715", uScore:0, rScore:-1, upright:{ kw:"结束 · 转化 · 新生", text:"死神牌并不预示字面意义上的终结，而是代表一个阶段的彻底完成，为新的开始让路。如果你感到某些事正在消逝，不要抗拒——这种结束本身就是转化的开始。" }, reversed:{ kw:"抗拒 · 停滞 · 无法放手", text:"逆位的死神提示你正在抗拒一个本该结束的事物。这种抗拒正在消耗你的能量，阻止新的可能进入你的生活。问问自己，你究竟在紧握什么，以及为什么。" } },
-  { id:14, name:"Temperance", numeral:"XIV", symbol:"\u25EC", uScore:0.5, rScore:-0.5, upright:{ kw:"平衡 · 耐心 · 融合", text:"节制牌带来温和而稳定的能量。答案是存在的，但需要时间与耐心的配合。如果你能保持平衡、逐步推进，事情会走向一个比你预期更好的结果。" }, reversed:{ kw:"过度 · 失衡 · 极端", text:"逆位的节制提示某种过度或失衡。你也许在某件事上走向了极端，或者无法在两个重要的需求之间找到平衡点。先照顾好内心的稳定，再向外寻求解答。" } },
-  { id:15, name:"The Devil", numeral:"XV", symbol:"\u25BD", uScore:-1, rScore:0.5, upright:{ kw:"束缚 · 欲望 · 执念", text:"恶魔牌提示你可能正处于某种束缚之中——习惯、关系或内心的执念。此刻的状态并不自由，答案的关键在于你是否愿意看清这条锁链，并承认它的存在。" }, reversed:{ kw:"解脱 · 自知 · 重获自由", text:"逆位的恶魔是个积极的信号——你正在或即将从某种束缚中挣脱出来。你已经开始看清那条让你困住的链子，这种自知是解脱的开始。" } },
-  { id:16, name:"The Tower", numeral:"XVI", symbol:"\u25AF", uScore:-1, rScore:-0.5, upright:{ kw:"骤变 · 崩塌 · 觉醒", text:"塔牌代表突然的颠覆与崩塌。它提示你，某些建立在不稳固基础上的东西可能正面临瓦解。这场动荡虽然痛苦，却往往是更真实的重建的前提。" }, reversed:{ kw:"延缓崩塌 · 内部危机 · 逃避", text:"逆位的塔提示危机被压抑或延缓，但并未消失。你也许在极力维持一个表面上的稳定，但内部的裂缝正在扩大。早一步面对，比等待崩塌的那一刻更为明智。" } },
-  { id:17, name:"The Star", numeral:"XVII", symbol:"\u2726", uScore:1, rScore:-0.5, upright:{ kw:"希望 · 治愈 · 指引", text:"星星是最温柔的希望之光。无论走过了什么，你正处于一个可以相信未来的时刻。答案是肯定的，而那个肯定来自一种真实的、不需要强求的希望。" }, reversed:{ kw:"失望 · 绝望 · 信念动摇", text:"逆位的星星提示你的内在信念正处于低谷。也许你已经太久没有感受到希望，以至于很难相信好事会发生。这不是终点，而是一个需要慢慢重新找回光的过程。" } },
-  { id:18, name:"The Moon", numeral:"XVIII", symbol:"\u25D1", uScore:-0.5, rScore:-1, upright:{ kw:"幻觉 · 不安 · 潜意识", text:"月亮牌提示此刻的情形并不清晰——你所看到的可能并非全貌，或者有某种恐惧在影响你的判断。不要急于得出结论，先分辨哪些是真实的，哪些是内心投射出来的恐惧。" }, reversed:{ kw:"混乱 · 欺骗 · 深层恐惧", text:"逆位的月亮提示更深层的混乱或欺骗。真相可能被刻意隐藏，或者你的潜意识恐惧已经在强烈地影响你的现实感知。这不是一个适合做重大决定的时机。" } },
-  { id:19, name:"The Sun", numeral:"XIX", symbol:"\u2609", uScore:1, rScore:0.5, upright:{ kw:"喜悦 · 成功 · 光明", text:"太阳是塔罗中最明亮的祝福之一。此刻的能量充沛而积极，答案几乎毫无疑问是肯定的。你有理由相信这件事会朝好的方向发展——不要让过多的担忧遮住这份阳光。" }, reversed:{ kw:"光芒受阻 · 过于乐观 · 暂时阴霾", text:"逆位的太阳并不是坏消息，只是光线暂时被遮住了。也许你过于乐观而忽略了一些细节，或者某种短暂的阻碍让你看不清全局。保持耐心，阳光总会再次照进来。" } },
-  { id:20, name:"Judgement", numeral:"XX", symbol:"\u229B", uScore:1, rScore:-0.5, upright:{ kw:"觉醒 · 召唤 · 审视", text:"审判牌代表一种内在的觉醒与召唤。你正被邀请以更宏观的视角重新审视这个问题的本质。这是一张鼓励你听从内心深处那个声音的牌——那个声音通常是对的。" }, reversed:{ kw:"自我怀疑 · 错失觉醒 · 拖延", text:"逆位的审判提示你正在回避一个重要的内在召唤。也许是某个你一直拖延的 decision，或者你害怕真正审视自己之后看到的东西。这种回避的代价不小。" } },
-  { id:21, name:"The World", numeral:"XXI", symbol:"\u25CE", uScore:1, rScore:0, upright:{ kw:"完成 · 整合 · 圆满", text:"世界牌是大阿尔卡纳的终点，代表完成与圆满。这是最强烈的肯定信号之一——你正处于一个完整的循环即将结束的时刻。答案是：是的，而且是全然地。" }, reversed:{ kw:"未竟之事 · 停滞 · 临门一脚", text:"逆位的世界提示你距离完成只差最后一步，但某种原因让你停在了那里。也许是完美主义，也许是对结束本身的恐惧。推最后一把，你比自己以为的更接近终点。" } }
+  {
+    id:0, name:"The Fool", numeral:"0", symbol:"\u25CC",
+    uScore:1, rScore:-0.5,
+    upright:{ kw:"新开始 · 自由 · 信念", text:"你正站在全新旅程的起点。愚者带来的是无所畏惧的纯粹能量——不是因为没有风险，而是有一种天真的勇气推你向前。此刻适合相信直觉，放下过度的计算，让事情自然展开。" },
+    reversed:{ kw:"鲁莽 · 逃避 · 停滞", text:"逆位的愚者提示当前的出发点可能不够稳固。也许你在用"随性"掩盖真正的犹豫，或者在不该轻率的地方过于冒险。先停下来，想清楚你真正在逃避的是什么。" }
+  },
+  {
+    id:1, name:"The Magician", numeral:"I", symbol:"\u221E",
+    uScore:1, rScore:-0.5,
+    upright:{ kw:"意志 · 行动 · 掌控", text:"魔术师告诉你，你已拥有完成这件事所需的一切能力。现在需要的不是更多准备，而是意志与行动。机会已在眼前，你是否准备好将它转化为现实？" },
+    reversed:{ kw:"欺骗 · 能力散失 · 拖延", text:"逆位的魔术师暗示资源或意志的浪费。你可能在自我怀疑中裹足不前，或者有欺骗自己的成分在内。重新梳理你真正拥有的条件，而不是你以为缺少的东西。" }
+  },
+  {
+    id:2, name:"The High Priestess", numeral:"II", symbol:"\u263D",
+    uScore:0, rScore:-0.5,
+    upright:{ kw:"直觉 · 神秘 · 等待", text:"女祭司的出现提醒你，答案还藏在水面之下。不是所有事情都需要立刻行动——有时最好的回应是静候与倾听。你内心深处已经知道答案，只是还不到时候。" },
+    reversed:{ kw:"忽视直觉 · 秘密 · 混乱", text:"你可能正在忽视内心的声音，或被表面的信息所迷惑。逆位的女祭司提示你需要更多时间与自己和解，再仓促下结论只会让局面更加不清晰。" }
+  },
+  {
+    id:3, name:"The Empress", numeral:"III", symbol:"\u2640\uFE0E",
+    uScore:1, rScore:0,
+    upright:{ kw:"丰盛 · 创造 · 滋养", text:"皇后代表丰盛与生命力。此刻的能量是有利的——无论关系、创作还是计划，都处于生长的土壤之中。只要你愿意给予时间与耐心，结果将会是丰厚的。" },
+    reversed:{ kw:"依赖 · 创造受阻 · 过度付出", text:"逆位的皇后提示创造力或关系中的某种阻塞。也许你在过度付出而消耗自己，或者在等待别人来给你你本该给自己的东西。重新找回内心的滋养来源。" }
+  },
+  {
+    id:4, name:"The Emperor", numeral:"IV", symbol:"\u2642\uFE0E",
+    uScore:0.5, rScore:-0.5,
+    upright:{ kw:"秩序 · 稳固 · 权威", text:"皇帝带来的是结构与稳定的力量。若你的问题关乎某件需要规则或决断的事，答案倾向肯定——前提是你愿意承担相应的责任，以清醒的理性去推进。" },
+    reversed:{ kw:"控制 · 僵化 · 权力失衡", text:"逆位的皇帝提示过度控制或权威的滥用。这件事也许正因为太多规则束缚而难以前进，或者有人在用强硬代替真正的解决。" }
+  },
+  {
+    id:5, name:"The Hierophant", numeral:"V", symbol:"\u271B",
+    uScore:0, rScore:-0.5,
+    upright:{ kw:"传统 · 信念 · 引导", text:"教皇提示你在这件事上寻求既有的智慧或传统路径。也许答案并非全新的方向，而是遵循已被证明有效的方式。也可以向信任的人寻求建议。" },
+    reversed:{ kw:"打破规则 · 质疑 · 叛逆", text:"逆位的教皇提示现有的框架可能正在束缚你。也许是时候质疑那些"理所当然"的规则，但要小心区分真正的突破与单纯的逃避。" }
+  },
+  {
+    id:6, name:"The Lovers", numeral:"VI", symbol:"\u25E1",
+    uScore:1, rScore:-1,
+    upright:{ kw:"连结 · 抉择 · 和谐", text:"恋人牌代表深刻的连结与重要的选择。这张牌带来肯定的能量——但它也提醒你，真正的选择需要出于内心的真实意愿，而非外部压力。" },
+    reversed:{ kw:"失调 · 价值观冲突 · 错误抉择", text:"逆位的恋人提示关系或内心的失衡。你也许正在面对价值观的冲突，或者一段关系中有某些地方被回避而未被正视。在做决定之前，先诚实地面对自己。" }
+  },
+  {
+    id:7, name:"The Chariot", numeral:"VII", symbol:"\u2295",
+    uScore:1, rScore:-0.5,
+    upright:{ kw:"胜利 · 意志 · 前进", text:"战车带来强烈的前进动力。你有能力克服眼前的障碍——关键在于将内心的不同力量整合起来，朝同一个方向推进。这是一张鼓励行动的牌。" },
+    reversed:{ kw:"失控 · 方向迷失 · 攻击性", text:"逆位的战车提示动力在错误的方向上消耗。你可能感到失控或被事情推着走，而非主动掌舵。先停下来，确认你真正想去往哪里，再重新出发。" }
+  },
+  {
+    id:8, name:"Strength", numeral:"VIII", symbol:"\u29BF",
+    uScore:1, rScore:-0.5,
+    upright:{ kw:"内力 · 耐心 · 温柔的勇气", text:"力量牌告诉你，你拥有足够的内在资源去面对这个问题。所需要的不是蛮力，而是那种温柔而坚定的意志——对自己和局面都保持耐心，答案将在这种稳定中显现。" },
+    reversed:{ kw:"怀疑 · 软弱 · 压抑", text:"逆位的力量提示内在资源的耗竭或自我怀疑的加剧。你可能正在压抑某些真实的感受，或者因为害怕失败而提前放弃。先允许自己脆弱，再谈坚强。" }
+  },
+  {
+    id:9, name:"The Hermit", numeral:"IX", symbol:"\u25B3",
+    uScore:-0.5, rScore:-1,
+    upright:{ kw:"内省 · 独处 · 寻找", text:"隐者的出现告诉你，这件事的答案不在外部，而需要向内寻找。此刻适合暂时退后一步，给自己独处和思考的空间。急于得出结论并非良策。" },
+    reversed:{ kw:"孤立 · 固执 · 拒绝帮助", text:"逆位的隐者提示过度的封闭或固执。你可能将独处变成了孤立，或者拒绝接受可能有益的外部视角。这次也许需要的是走出来，而非继续退缩。" }
+  },
+  {
+    id:10, name:"Wheel of Fortune", numeral:"X", symbol:"\u2299",
+    uScore:1, rScore:-0.5,
+    upright:{ kw:"转机 · 命运 · 循环", text:"命运之轮提示一个自然转折点的到来。事情正处于变动之中，整体的风向是积极的。这张牌鼓励你信任这个过程——有些事情并不需要你去强行控制，时机已经在转变。" },
+    reversed:{ kw:"不走运 · 阻力 · 抗拒变化", text:"逆位的命运之轮提示循环中的阻力。也许你正在抗拒一个本该到来的变化，或者暂时处于低潮期。轮子始终在转，只是需要多一些耐心。" }
+  },
+  {
+    id:11, name:"Justice", numeral:"XI", symbol:"\u229C",
+    uScore:0.5, rScore:-0.5,
+    upright:{ kw:"公正 · 因果 · 真相", text:"正义牌告诉你，这件事将得到公正的对待。如果你问的是某件基于诚实与付出的事，答案倾向肯定——但它也提醒你，结果将严格对应你所投入的。" },
+    reversed:{ kw:"不公 · 逃避 · 不诚实", text:"逆位的正义提示某种不平衡或逃避责任的状态。也许有些事情还未得到公正的对待，或者某个重要的真相被刻意回避。在继续前进之前，需要先面对这个问题。" }
+  },
+  {
+    id:12, name:"The Hanged Man", numeral:"XII", symbol:"\u22A5",
+    uScore:-0.5, rScore:0,
+    upright:{ kw:"暂停 · 放手 · 换视角", text:"倒吊人要求你暂停，从不同角度看待眼前的问题。也许答案不在于推进，而在于放下。从另一个方向，你可能会看到你一直错过的东西。" },
+    reversed:{ kw:"拖延 · 无谓牺牲 · 顽固", text:"逆位的倒吊人提示你的等待已变成拖延，或者你正在做出无谓的牺牲。是时候结束这种悬而未决的状态，做出决定，继续前行。" }
+  },
+  {
+    id:13, name:"Death", numeral:"XIII", symbol:"\u2715",
+    uScore:0, rScore:-1,
+    upright:{ kw:"结束 · 转化 · 新生", text:"死神牌并不预示字面意义上的终结，而是代表一个阶段的彻底完成，为新的开始让路。如果你感到某些事正在消逝，不要抗拒——这种结束本身就是转化的开始。" },
+    reversed:{ kw:"抗拒 · 停滞 · 无法放手", text:"逆位的死神提示你正在抗拒一个本该结束的事物。这种抗拒正在消耗你的能量，阻止新的可能进入你的生活。问问自己，你究竟在紧握什么，以及为什么。" }
+  },
+  {
+    id:14, name:"Temperance", numeral:"XIV", symbol:"\u25EC",
+    uScore:0.5, rScore:-0.5,
+    upright:{ kw:"平衡 · 耐心 · 融合", text:"节制牌带来温和而稳定的能量。答案是存在的，但需要时间与耐心的配合。如果你能保持平衡、逐步推进，事情会走向一个比你预期更好的结果。" },
+    reversed:{ kw:"过度 · 失衡 · 极端", text:"逆位的节制提示某种过度或失衡。你也许在某件事上走向了极端，或者无法在两个重要的需求之间找到平衡点。先照顾好内心的稳定，再向外寻求解答。" }
+  },
+  {
+    id:15, name:"The Devil", numeral:"XV", symbol:"\u25BD",
+    uScore:-1, rScore:0.5,
+    upright:{ kw:"束缚 · 欲望 · 执念", text:"恶魔牌提示你可能正处于某种束缚之中——习惯、关系或内心的执念。此刻的状态并不自由，答案的关键在于你是否愿意看清这条锁链，并承认它的存在。" },
+    reversed:{ kw:"解脱 · 自知 · 重获自由", text:"逆位的恶魔是个积极的信号——你正在或即将从某种束缚中挣脱出来。你已经开始看清那条让你困住的链子，这种自知是解脱的开始。" }
+  },
+  {
+    id:16, name:"The Tower", numeral:"XVI", symbol:"\u25AF",
+    uScore:-1, rScore:-0.5,
+    upright:{ kw:"骤变 · 崩塌 · 觉醒", text:"塔牌代表突然的颠覆与崩塌。它提示你，某些建立在不稳固基础上的东西可能正面临瓦解。这场动荡虽然痛苦，却往往是更真实的重建的前提。" },
+    reversed:{ kw:"延缓崩塌 · 内部危机 · 逃避", text:"逆位的塔提示危机被压抑或延缓，但并未消失。你也许在极力维持一个表面上的稳定，但内部的裂缝正在扩大。早一步面对，比等待崩塌的那一刻更为明智。" }
+  },
+  {
+    id:17, name:"The Star", numeral:"XVII", symbol:"\u2726",
+    uScore:1, rScore:-0.5,
+    upright:{ kw:"希望 · 治愈 · 指引", text:"星星是最温柔的希望之光。无论走过了什么，你正处于一个可以相信未来的时刻。答案是肯定的，而那个肯定来自一种真实的、不需要强求的希望。" },
+    reversed:{ kw:"失望 · 绝望 · 信念动摇", text:"逆位的星星提示你的内在信念正处于低谷。也许你已经太久没有感受到希望，以至于很难相信好事会发生。这不是终点，而是一个需要慢慢重新找回光的过程。" }
+  },
+  {
+    id:18, name:"The Moon", numeral:"XVIII", symbol:"\u25D1",
+    uScore:-0.5, rScore:-1,
+    upright:{ kw:"幻觉 · 不安 · 潜意识", text:"月亮牌提示此刻的情形并不清晰——你所看到的可能并非全貌，或者有某种恐惧在影响你的判断。不要急于得出结论，先分辨哪些是真实的，哪些是内心投射出来的恐惧。" },
+    reversed:{ kw:"混乱 · 欺骗 · 深层恐惧", text:"逆位的月亮提示更深层的混乱或欺骗。真相可能被刻意隐藏，或者你的潜意识恐惧已经在强烈地影响你的现实感知。这不是一个适合做重大决定的时机。" }
+  },
+  {
+    id:19, name:"The Sun", numeral:"XIX", symbol:"\u2609",
+    uScore:1, rScore:0.5,
+    upright:{ kw:"喜悦 · 成功 · 光明", text:"太阳是塔罗中最明亮的祝福之一。此刻的能量充沛而积极，答案几乎毫无疑问是肯定的。你有理由相信这件事会朝好的方向发展——不要让过多的担忧遮住这份阳光。" },
+    reversed:{ kw:"光芒受阻 · 过于乐观 · 暂时阴霾", text:"逆位的太阳并不是坏消息，只是光线暂时被遮住了。也许你过于乐观而忽略了一些细节，或者某种短暂的阻碍让你看不清全局。保持耐心，阳光总会再次照进来。" }
+  },
+  {
+    id:20, name:"Judgement", numeral:"XX", symbol:"\u229B",
+    uScore:1, rScore:-0.5,
+    upright:{ kw:"觉醒 · 召唤 · 审视", text:"审判牌代表一种内在的觉醒与召唤。你正被邀请以更宏观的视角重新审视这个问题的本质。这是一张鼓励你听从内心深处那个声音的牌——那个声音通常是对的。" },
+    reversed:{ kw:"自我怀疑 · 错失觉醒 · 拖延", text:"逆位的审判提示你正在回避一个重要的内在召唤。也许是某个你一直拖延的决定，或者你害怕真正审视自己之后看到的东西。这种回避的代价不小。" }
+  },
+  {
+    id:21, name:"The World", numeral:"XXI", symbol:"\u25CE",
+    uScore:1, rScore:0,
+    upright:{ kw:"完成 · 整合 · 圆满", text:"世界牌是大阿尔卡纳的终点，代表完成与圆满。这是最强烈的肯定信号之一——你正处于一个完整的循环即将结束的时刻。答案是：是的，而且是全然地。" },
+    reversed:{ kw:"未竟之事 · 停滞 · 临门一脚", text:"逆位的世界提示你距离完成只差最后一步，但某种原因让你停在了那里。也许是完美主义，也许是对结束本身的恐惧。推最后一把，你比自己以为的更接近终点。" }
+  }
 ];
 
 const POSITIONS = ["现状","阻碍","建议"];
@@ -443,7 +558,9 @@ function startReading() {
     document.getElementById(`cs${i}`).textContent    = card.symbol;
     document.getElementById(`cname${i}`).textContent = card.name;
     document.getElementById(`cor${i}`).textContent   = rev ? "REVERSED" : "UPRIGHT";
-    document.getElementById(`cf${i}`).classList.toggle('reversed', rev);
+    const face = document.getElementById(`cf${i}`);
+    if (rev) face.classList.add('reversed');
+    else face.classList.remove('reversed');
   });
 
   document.getElementById('landing').classList.add('hidden');
@@ -498,8 +615,10 @@ function restart() {
   document.getElementById('landing').classList.remove('hidden');
 }
 
-document.getElementById('btn-draw').addEventListener('click', startReading);
-document.getElementById('btn-restart').addEventListener('click', restart);
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('btn-draw').addEventListener('click', startReading);
+  document.getElementById('btn-restart').addEventListener('click', restart);
+});
 </script>
 
 </body>
