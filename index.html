@@ -443,7 +443,9 @@ function startReading() {
     document.getElementById(`cs${i}`).textContent    = card.symbol;
     document.getElementById(`cname${i}`).textContent = card.name;
     document.getElementById(`cor${i}`).textContent   = rev ? "REVERSED" : "UPRIGHT";
-    document.getElementById(`cf${i}`).classList.toggle('reversed', rev);
+    const face = document.getElementById(`cf${i}`);
+    if (rev) face.classList.add('reversed');
+    else face.classList.remove('reversed');
   });
 
   document.getElementById('landing').classList.add('hidden');
@@ -498,8 +500,11 @@ function restart() {
   document.getElementById('landing').classList.remove('hidden');
 }
 
-document.getElementById('btn-draw').addEventListener('click', startReading);
-document.getElementById('btn-restart').addEventListener('click', restart);
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('btn-draw').addEventListener('click', startReading);
+  document.getElementById('btn-restart').addEventListener('click', restart);
+});
+
 </script>
 
 </body>
