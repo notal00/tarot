@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -136,79 +133,87 @@
     }
 
     /* ── Cards ── */
-.cards-grid {
-  display: flex;
-  gap: 1.2rem;
-  justify-content: center;
-  /* 允许在小屏幕换行，防止 Safari 压缩卡片高度 */
-  flex-wrap: wrap; 
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-}
+    .cards-grid {
+      display:flex; gap:1.2rem;
+      justify-content:center; flex-wrap:nowrap;
+      width:100%; max-width:660px;
+    }
+    .card-slot {
+      display:flex; flex-direction:column;
+      align-items:center; gap:.8rem;
+      flex:1; min-width:0;
+    }
+    .position-label {
+      font-size:.62rem; letter-spacing:.3em;
+      color:var(--text-dim); white-space:nowrap;
+    }
+    .card-wrapper {
+      perspective:1000px;
+      width:clamp(105px,27vw,170px);
+      aspect-ratio:10/17;
+    }
+    .card-inner {
+      width:100%; height:100%;
+      position:relative; transform-style:preserve-3d;
+      transition:transform .85s cubic-bezier(.4,0,.2,1);
+    }
+    .card-inner.flipped { transform:rotateY(180deg); }
 
-.card-slot {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  /* 显式定义 flex-basis 防止计算失效 */
-  flex: 1 1 120px; 
-  min-width: 0;
-}
+    .card-back, .card-face {
+      position:absolute; inset:0; border-radius:7px;
+      backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    }
 
-.card-wrapper {
-  perspective: 1000px;
-  -webkit-perspective: 1000px; /* Safari 兼容 */
-  width: clamp(105px, 25vw, 170px);
-  /* 移除 aspect-ratio，改用传统的 padding-bottom 占位或显式高度计算 */
-  position: relative;
-}
+    .card-back {
+      background:var(--card-bg);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden; box-shadow:var(--shadow);
+    }
+    .card-back::before {
+      content:''; position:absolute; inset:7px;
+      border:1px solid var(--card-gdim); border-radius:3px;
+    }
+    .card-back::after {
+      content:''; position:absolute; inset:14px;
+      background-image:
+        repeating-linear-gradient( 45deg, var(--card-gdim) 0,var(--card-gdim) .5px,transparent .5px,transparent 12px),
+        repeating-linear-gradient(-45deg, var(--card-gdim) 0,var(--card-gdim) .5px,transparent .5px,transparent 12px);
+    }
+    .back-glyph {
+      position:relative; z-index:1;
+      font-size:.55rem; letter-spacing:.3em;
+      color:rgba(196,164,124,.28);
+      font-family:'Cinzel Decorative',serif;
+    }
 
-/* 使用伪元素保持 10:17 的比例，这在 Safari 下最稳定 */
-.card-wrapper::before {
-  content: "";
-  display: block;
-  padding-top: 170%; 
-}
-
-.card-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-inner.flipped {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-}
-
-.card-back, .card-face {
-  position: absolute;
-  inset: 0;
-  border-radius: 7px;
-  /* 必须同时写带前缀和不带前缀的，解决 Safari 翻转隐藏问题 */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  /* 强制开启 GPU 加速，防止翻转锯齿 */
-  -webkit-transform: translate3d(0,0,0); 
-}
-
-/* 确保正面初始状态也有前缀 */
-.card-face {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-}
-
-.card-face.reversed .card-symbol {
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-}
+    .card-face {
+      background:var(--card-bg);
+      transform:rotateY(180deg);
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:space-between;
+      padding:clamp(.65rem,2.5vw,.95rem) clamp(.45rem,1.8vw,.72rem);
+      border:1px solid rgba(196,164,124,.1);
+      box-shadow:var(--shadow);
+    }
+    .card-face::before {
+      content:''; position:absolute; inset:5px;
+      border:1px solid rgba(196,164,124,.07);
+      border-radius:3px; pointer-events:none;
+    }
+    .card-numeral {
+      font-family:'Cinzel Decorative',serif;
+      font-size:clamp(.4rem,.85vw,.56rem);
+      color:rgba(196,164,124,.42); letter-spacing:.12em;
+    }
+    .card-symbol {
+      flex:1; display:flex; align-items:center; justify-content:center;
+      font-size:clamp(1.9rem,6.5vw,3rem);
+      color:var(--card-gold); line-height:1;
+      font-family:'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols',sans-serif;
+      font-style:normal;
+      transition:transform .85s cubic-bezier(.4,0,.2,1) .2s;
+    }
+    .card-face.reversed .card-symbol { transform:rotate(180deg); }
 
     .card-bottom { text-align:center; }
     .card-name {
